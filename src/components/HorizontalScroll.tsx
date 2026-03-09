@@ -15,6 +15,7 @@ const projects = [
     stack: ["Next.js", "Django REST", "Docker", "Mapbox", "PostgreSQL"],
     accent: "#7c3aed",
     bg: "bg-[#7c3aed]/[0.06]",
+    href: "https://pixelagri.com",
   },
   {
     num: "02",
@@ -162,9 +163,22 @@ export default function HorizontalScroll() {
             </div>
 
             <div>
-              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-zinc-500">
-                {project.role}
-              </p>
+              <div className="flex items-center justify-between">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                  {project.role}
+                </p>
+                {project.href && (
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 rounded-full border border-zinc-300 px-3 py-1 text-[0.65rem] font-semibold uppercase tracking-[0.1em] text-zinc-600 transition-colors hover:border-zinc-900 hover:text-zinc-900"
+                    data-hover
+                  >
+                    Visit &rarr;
+                  </a>
+                )}
+              </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
                   <span

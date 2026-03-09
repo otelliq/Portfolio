@@ -1,9 +1,3 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 const techStack = [
   { name: "React", color: "#61dafb" },
   { name: "Next.js", color: "#000000" },
@@ -20,32 +14,13 @@ const techStack = [
 ];
 
 export default function TechStack() {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    if (!ref.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.from(".tech-item", {
-        y: 30,
-        opacity: 0,
-        stagger: 0.05,
-        duration: 0.6,
-        ease: "power3.out",
-        scrollTrigger: { trigger: ref.current, start: "top 82%" },
-      });
-    }, ref);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <div ref={ref} className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
-      {techStack.map((tech) => (
+    <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6">
+      {techStack.map((tech, i) => (
         <div
           key={tech.name}
-          className="tech-item group flex flex-col items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition-all duration-300 hover:border-zinc-300 hover:bg-zinc-50"
+          className="group flex flex-col items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-4 transition-all duration-300 hover:border-zinc-300 hover:bg-zinc-50"
+          style={{ animationDelay: `${i * 50}ms` }}
           data-hover
         >
           <div
